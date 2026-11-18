@@ -19,6 +19,7 @@ function love.load()
 end
 
 function love.update(dt)
+	--player move
     if love.keyboard.isDown('right') then 
         if player.x < (love.graphics.getWidth() - player.width) then                  
 		    player.x = player.x + (player.speed * dt)   
@@ -28,6 +29,7 @@ function love.update(dt)
 		    player.x = player.x - (player.speed * dt) 
         end
     end  
+	--player jump
     if love.keyboard.isDown('up') then                               
 		if player.y_velocity == 0 then
 			player.y_velocity = player.jump_height  
