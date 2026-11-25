@@ -3,6 +3,8 @@ function love.load()
     --parameters
     w = love.graphics.getWidth()
     h = love.graphics.getHeight()
+    net_count = 21
+    net_girth = 10 
     --ball
     ball = {}
     ball.size = 25
@@ -12,7 +14,7 @@ function love.load()
     ball.dy = 500   
     --paddle
     paddle = {}
-    paddle.padding = ball.size*1.5
+    paddle.padding = ball.size
     paddle.thickness = ball.size
     paddle.length = 100
     paddle.x = paddle.padding
@@ -51,12 +53,11 @@ function love.draw()
     --contrapaddle
     love.graphics.rectangle("fill", contrapaddle.x, contrapaddle.y, contrapaddle.thickness, contrapaddle.length)
     --line
-    local n = 21
-    local segment_length = h/n
-    for i = 0, n-1 do
+    local segment_length = h/net_count
+    for i = 0, net_count-1 do
         if i % 2 == 0 then
-            love.graphics.setLineWidth(10)
-            love.graphics.line(w/2, i*segment_length, w/2 - 5, (i + 1)*segment_length)
+            love.graphics.setLineWidth(net_girth)
+            love.graphics.line(w/2, i*segment_length, w/2 - net_girth/2, (i + 1)*segment_length)
         end
     end
 end
